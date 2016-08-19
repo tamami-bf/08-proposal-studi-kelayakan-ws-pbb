@@ -1,0 +1,84 @@
+\documentclass[pdftex, 12pt, oneside]{article}
+
+%\usepackage[paperwidth=8.5in, paperheight=13in]{geometry} % folio
+\usepackage[paperwidth=8.27in, paperheight=11.69in]{geometry} % A4
+\usepackage{makeidx} % allow index generation
+\usepackage{graphicx} % standard latex graphics tool when including figure files
+\usepackage[bottom]{footmisc} % places footnotes at page bottom
+\usepackage[english]{babel}
+\usepackage{enumerate}
+\usepackage{paralist}
+\usepackage{float}
+\usepackage{gensymb}
+\usepackage{listings}
+
+\renewcommand{\baselinestretch}{1.5}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{document}
+
+\begin{center}
+{\large PROPOSAL STUDI KELAYAKAN LAYANAN \textit{WEB SERVICES} SEBAGAI CARA KOMUNIKASI DALAM PENCATATAN PEMBAYARAN PAJAK BUMI DAN BANGUNAN PERDESAAN DAN PERKOTAAN DI KABUPATEN BREBES}\\[1cm]
+19 Juli 2016\\
+Priyanto Tamami, S.Kom.
+\end{center}
+
+\section{LATAR BELAKANG MASALAH}
+
+Pajak Bumi dan Bangunan adalah jenis pajak yang objeknya berupa bumi dan/atau bangunan, yang secara sah dimiliki, dikuasai, dan/atau dimanfaatkan oleh wajib pajak. Pada saat awal dilaksanakannya pengelolaan Pajak Bumi dan Bangunan Perdesaan dan Perkotaan oleh Pemerintah Pusat, sistem untuk melakukan manajemen data objek pajak belum ada, namun setelah tahun 1998, dibentuklah Sistem Manajemen Informasi Objek Pajak yang dikenal dengan nama SISMIOP yang ditandai dengan munculnya Keputusan Direktur Jenderal Pajak Nomor KEP-04/PJ.6/1998 yang telah diubah dengan KEP-533/PJ./2000 tentang Petunjuk Pelaksanaan Pendaftaran, Pendataan dan Penilaian Objek dan Subjek Pajak Bumi dan Bangunan (PBB) dalam Rangka Pembentukan dan atau Pemeliharaan Basis Data Sistem Manajemen Informasi Objek Pajak (SISMIOP).
+
+Adapun latar belakang dibangunnya SISMIOP adalah karena besarnya jumlah objek pajak yang ada, jumlah Kantor Pelayanan Pajak Pratama yang cukup banyak, dan beragamnya tingkat pendidikan dan pengetahuan dari wajib pajak untuk melaksanakan kewajiban mendaftarkan objek pajak yang dikuasai/dimiliki/dimanfaatkannya.
+
+Seiring berjalannya waktu dalam pengelolaan Pajak Bumi dan Bangunan Perdesaan dan Perkotaan (PBB-P2) oleh Pemerintah Pusat, maka pada tahun 2014 awal, kegiatan pengelolaan PBB-P2 diserahkan ke Pemerintah Kabupaten Brebes sebagai salah satu penopang sumber pendapatan asli daerah.
+
+Pada awal pengelolaan di Kabupaten Brebes, kerjasama dengan tempat pembayaran telah dilakukan hanya pada 1 (satu) bank, sama dengan tempat Kas Daerah tersimpan, yaitu Bank Pembangunan Daerah (BPD) Jawa Tengah. Sistem yang digunakan adalah \textit{single host}, dimana ada 2 (dua) data terpisah, satu berada di Dinas Pendapatan dan Pengelolaan Keuangan Kabupaten Brebes (DPPK), yang kedua berada di BPD Jawa Tengah, yang keduanya harus selalu diselaraskan secara manual.
+
+Hal yang terjadi adalah sebagai berikut :
+
+\begin{itemize}
+\item Data di DPPK akan selalu berubah, dari hari ke hari, meskipun hari itu hari libur nasional, sampai dengan 1 minggu sebelum tanggal jatuh tempo ditahun berjalan.
+\item Data di DPPK apabila statusnya sudah terbayar, namun ada pengajuan pelayanan perubahan data, statusnya masih dapat menjadi tertagih walaupun Nomor Objek Pajak (NOP) dan tahun pajaknya sama.
+\item Data di BPD Jawa Tengah yang mencatat hasil pembayaran di hari berjalan tidak dapat diunduh secara otomatis. Data hasil pembayaran hanya dapat diunduh H+n dimana n > 0.
+\item Data di BPD Jawa Tengah pada hari libur nasional tidak dapat diakses baik untuk melakukan pengunduhan data pembayaran maupun perubahan data tagihan.
+\item Data di BPD Jawa Tengah tidak dapat dirubah apabila data untuk NOP dan tahun pajak yang diminta telah terbayar.
+\item Secara harian, data dari BPD Jawa Tengah harus dipindahkan secara manual dan dicatatkan secara otomatis oleh aplikasi ke sistem Basis Data DPPK. 
+\end{itemize}
+
+Dari beberapa hal tersebut, muncul perbedaan data sebagai berikut :
+
+\begin{itemize}
+\item Data di DPPK yang telah dirubah sesuai pengajuan pelayanan yang diajukan wajib pajak / kuasanya harus dibatalkan dan dikembalikan ke data sebelumnya karena data untuk NOP dan tahun pajak yang sama telah terbayar dan tercatat di BPD Jawa Tengah.
+\item Data di DPPK tidak dapat menyajikan angka realisasi nyata pada hari berjalan.
+\item Pencatatan pembayaran harian yang dilakukan oleh aplikasi tidak sepenuhnya tercatat dalam sistem basis data DPPK, data-data yang tidak sama persis tidak akan pernah tercatat dalam sistem basis data DPPK dengan diberikan kode kesalahan tertentu.
+\end{itemize}
+
+Dari ketiga perbedaan tersebut, poin pertama dan ketiga adalah penyebab utama rusaknya keselarasan data yang seharusnya terjaga diantara 2 sumber data tersebut.
+
+Maka dari itu, untuk memperbaiki kekurangan dari sistem \textit{single host} ini, maka perlu dibangun sistem \textit{host-to-host} dimana data utama akan berada di DPPK, dan tempat pembayaran akan melakukan akses permintaan informasi langsung ke basis data di DPPK, begitu juga dengan proses transaksi pembayaran, tempat pembayaran akan langsung mencatatkannya di basis data DPPK sehingga validitas sumber data lebih terjaga.
+
+\section{MAKSUD DAN TUJUAN}
+
+Maksud dan tujuan dari studi kelayakan ini adalah memberikan informasi bahwa dalam sistem komunikasi \textit{host-to-host} diperlukan bentuk komunikasi data yang ringan dan juga cepat sehingga dengan banyaknya transaksi yang muncul, kebutuhan akan \textit{bandwidth} internet dapat diukur karena penggunaan format \textit{json} sebagai format pertukaran data ringan yang hanya berbentuk teks.
+
+\section{BATASAN MASALAH}
+
+Karena luasnya lingkup \textit{web services}, mulai dari protokol Simple Object Access Protocol (SOAP) sampai dengan Representational State Transfer (REST), maka studi kelayakan ini hanya akan dibatasi pada penggunaan arsitektur \textit{REST} saja.
+
+\section{PERENCANAAN TARGET}
+
+Target yang akan dicapai dari studi kelayakan ini adalah apakah layak sebuah layanan \textit{web services} menjadi salah satu cara komunikasi dalam pencatatan pembayaran PBB-P2 di Kabupaten Brebes.
+
+\section{PERSIAPAN PENGUMPULAN FAKTA}
+
+\section{PENENTUAN JADWAL WAKTU}
+
+\section{CAKUPAN KEGIATAN}
+
+Cakupan kegiatan pada studi kelayakan ini hanya melakukan kajian dari beberapa sumber, untuk kemudian disimpulkan apakah layak atau tidak layanan \textit{web services} dalam pencatatan pembayaran PBB-P2 ini dibangun.
+
+\section{TENAGA DAN BIAYA YANG DIPERLUKAN UNTUK STUDI KELAYAKAN}
+
+Tenaga yang diperlukan untuk studi kelayakan ini hanya 1 (satu) orang fungsional Pranata Komputer sebagai penyusun materi studi kelayakan.
+
+\end{document}
