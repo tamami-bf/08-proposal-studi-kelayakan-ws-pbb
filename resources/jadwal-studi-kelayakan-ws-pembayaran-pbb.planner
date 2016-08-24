@@ -26,12 +26,20 @@
     <task id="2" name="Penelaahan Materi" note="" work="345600" start="20160726T000000Z" end="20160810T170000Z" work-start="20160726T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <constraint type="must-start-on" time="20160726T000000Z"/>
     </task>
+    <task id="3" name="Penelitian dan Pembuatan Laporan Studi Kelayakan Pendahuluan" note="" work="345600" start="20160811T000000Z" end="20160826T170000Z" work-start="20160811T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20160811T000000Z"/>
+    </task>
+    <task id="4" name="Penelitian dan Pembuatan Laporan Studi Kelayakan Rinci" note="" work="345600" start="20160829T000000Z" end="20160913T170000Z" work-start="20160829T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20160829T000000Z"/>
+    </task>
   </tasks>
   <resource-groups/>
   <resources>
     <resource id="1" name="tamami" short-name="" type="1" units="0" email="" note="" std-rate="0"/>
   </resources>
   <allocations>
+    <allocation task-id="4" resource-id="1" units="100"/>
+    <allocation task-id="3" resource-id="1" units="100"/>
     <allocation task-id="2" resource-id="1" units="100"/>
     <allocation task-id="1" resource-id="1" units="100"/>
   </allocations>
